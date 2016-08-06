@@ -15,7 +15,7 @@ function bubblesort(arr) {
 
     for (var i = len - 2; i > 0; i--) {
 
-        for (var j = 0; j <= i; j++) {
+        for (var j = 0; j < i; j++) {
 
             if (arr[j] > arr[j + 1]) {
 
@@ -237,9 +237,74 @@ function heapSort(arr) {
     }
 }
 
+/*
+ * 归并排序
+ * */
+function mergesort(arr, start, end) {
+
+    start = start === undefined ? 0 : start;
+    end = end === undefined ? arr.length - 1 : end;
+
+    if (start < end) {
+
+        var mid = Math.floor((start + end) / 2);
+        mergesort(arr, start, mid);
+        mergesort(arr, mid + 1, end);
+        merge(arr, start, mid, mid + 1, end);
+    }
+}
+
+/*
+ * 归并两个排好序的子数组
+ * */
+function merge(arr, s1, e1, s2, e2) {
+
+    var left = [],
+        right = [];
+
+    var infinite = 100000000;
+
+    for (var i = s1; i <= e1; i++) {
+
+        left.push(arr[i]);
+    }
+
+    for (var j = s2; j <= e2; j++) {
+
+        right.push(arr[j]);
+    }
+
+    left.push(infinite);
+    right.push(infinite);
+
+    var lNow = 0, rNow = 0, now = s1;
+
+    while (now <= e2) {
+
+        var lEle = left[lNow],
+            rEle = right[rNow];
+
+        if (lEle < rEle) {
+
+            arr[now++] = lEle;
+            lNow++;
+        }
+        else {
+
+            arr[now++] = rEle;
+            rNow++;
+        }
+    }
+}
+
+//var test = [1, 3, 5, 6, 2, 6, 199, 200];
+
+//console.log(merge(test, 0, 3, 4, 7));
+//console.log(mergesort(test, 0, 7));
+
 function generateRandomList() {
 
-    return new Array(21)
+    return new Array(10)
         .fill(1)
         .map(function () {
             return parseInt(Math.random() * 100, 10);
@@ -247,5 +312,7 @@ function generateRandomList() {
 }
 
 var test = generateRandomList();
-heapSort(test);
 console.log(test);
+mergesort(test)
+console.log(test);
+// console.log(test);

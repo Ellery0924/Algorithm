@@ -1,3 +1,21 @@
+/**
+ * 比较排序算法
+ *
+ * 三种基本排序算法:
+ * 冒泡排序
+ * 插入排序
+ * 选择排序
+ *
+ * 高级排序算法:
+ * 快速排序(原址/非原址)
+ * 堆排序
+ * 归并排序
+ */
+
+
+/*
+ * 辅助操作,交换两个元素
+ * */
 function swap(arr, i, j) {
 
     var tmp = arr[j];
@@ -46,7 +64,7 @@ function insertionsort(arr) {
 }
 
 /*
- * 选择排序
+ * 获取从s开始最小元素的index
  * */
 function minIndex(arr, s) {
 
@@ -63,6 +81,9 @@ function minIndex(arr, s) {
     return min;
 }
 
+/*
+ * 选择排序
+ * */
 function selectionsort(arr) {
 
     for (var i = 0; i < arr.length - 1; i++) {
@@ -296,11 +317,6 @@ function merge(arr, s1, e1, s2, e2) {
         }
     }
 }
-
-//var test = [1, 3, 5, 6, 2, 6, 199, 200];
-
-//console.log(merge(test, 0, 3, 4, 7));
-//console.log(mergesort(test, 0, 7));
 
 function generateRandomList() {
 

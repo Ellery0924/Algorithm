@@ -304,7 +304,7 @@ function merge(arr, s1, e1, s2, e2) {
 
 function generateRandomList() {
 
-    return new Array(10)
+    return new Array(100)
         .fill(1)
         .map(function () {
             return parseInt(Math.random() * 100, 10);
@@ -313,6 +313,6 @@ function generateRandomList() {
 
 var test = generateRandomList();
 console.log(test);
-mergesort(test)
+mergesort(test);
 console.log(test);
 // console.log(test);

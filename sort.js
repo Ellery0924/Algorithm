@@ -27,7 +27,7 @@ function swap(arr, i, j) {
 /*
  * 冒泡排序
  * */
-function bubblesort(arr) {
+function bubbleort(arr) {
 
     var len = arr.length;
 
@@ -46,7 +46,7 @@ function bubblesort(arr) {
 /*
  * 插入排序
  * */
-function insertionsort(arr) {
+exports.insertionSort = function insertionort(arr) {
 
     for (var i = 1; i < arr.length; i++) {
 
@@ -84,7 +84,7 @@ function minIndex(arr, s) {
 /*
  * 选择排序
  * */
-function selectionsort(arr) {
+function selectionSort(arr) {
 
     for (var i = 0; i < arr.length - 1; i++) {
 
@@ -95,7 +95,7 @@ function selectionsort(arr) {
 /*
  * 非原址快排
  * */
-function quicksort(arr) {
+function quickSort(arr) {
 
     if (arr.length === 0) {
 
@@ -126,7 +126,7 @@ function quicksort(arr) {
 /*
  * 原址快排
  * */
-function quicksort2(arr, start, end) {
+function quickSort2(arr, start, end) {
 
     if (start >= end) {
 
@@ -261,7 +261,7 @@ function heapSort(arr) {
 /*
  * 归并排序
  * */
-function mergesort(arr, start, end) {
+function mergeSort(arr, start, end) {
 
     start = start === undefined ? 0 : start;
     end = end === undefined ? arr.length - 1 : end;
@@ -269,8 +269,8 @@ function mergesort(arr, start, end) {
     if (start < end) {
 
         var mid = Math.floor((start + end) / 2);
-        mergesort(arr, start, mid);
-        mergesort(arr, mid + 1, end);
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid + 1, end);
         merge(arr, start, mid, mid + 1, end);
     }
 }
@@ -317,18 +317,3 @@ function merge(arr, s1, e1, s2, e2) {
         }
     }
 }
-
-function generateRandomList() {
-
-    return new Array(100)
-        .fill(1)
-        .map(function () {
-            return parseInt(Math.random() * 100, 10);
-        });
-}
-
-var test = generateRandomList();
-console.log(test);
-mergesort(test);
-console.log(test);
-// console.log(test);

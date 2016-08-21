@@ -159,31 +159,67 @@ class BinaryTree {
         }
     }
 
-    getMin() {
+    getMin(node) {
 
-        let current = this.root;
+        if (node === undefined) {
 
-        while (current.left) {
-
-            current = current.left;
+            node = this.root;
         }
 
-        return current.value;
+        if (node.left === null) {
+
+            return node.value;
+        }
+        else {
+
+            return this.getMin(node.left);
+        }
     }
 
-    getMax() {
+    getMax(node) {
 
-        let current = this.root;
+        if (node === undefined) {
 
-        while (current.right) {
-
-            current = current.right;
+            node = this.root;
         }
 
-        return current.value;
+        if (node.right === null) {
+
+            return node.value;
+        }
+        else {
+
+            return this.getMax(node.right);
+        }
     }
 
-    delete() {
+    getNodeByValue(value, node) {
+
+        if (node === undefined) {
+
+            node = this.root;
+        }
+
+        if (node.value === value) {
+
+            return node;
+        }
+        else {
+
+            if (node.value > value) {
+
+                return this.getNodeByValue(value, node.left);
+            }
+            else {
+
+                return this.getNodeByValue(value, node.right);
+            }
+        }
+
+        return null;
+    }
+
+    delete(value) {
 
     }
 }
@@ -203,3 +239,4 @@ console.log('min:');
 console.log(testTree.getMin());
 console.log('max:');
 console.log(testTree.getMax());
+console.log(testTree.getNodeByValue(8));

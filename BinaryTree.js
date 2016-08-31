@@ -134,8 +134,8 @@ class BinaryTree {
         if (node !== null) {
 
             console.log(node.value);
-            this.iterateMiddle(node.left);
-            this.iterateMiddle(node.right);
+            this.iterateFirst(node.left);
+            this.iterateFirst(node.right);
         }
     }
 
@@ -153,8 +153,8 @@ class BinaryTree {
 
         if (node !== null) {
 
-            this.iterateMiddle(node.left);
-            this.iterateMiddle(node.right);
+            this.iterateLast(node.left);
+            this.iterateLast(node.right);
             console.log(node.value);
         }
     }
